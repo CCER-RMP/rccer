@@ -1,4 +1,4 @@
-Package: ccer
+Package: rccer
 Type: Package
 Title: R Library for CCER Data and Research
 Version: 0.1.0
