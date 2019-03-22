@@ -1,0 +1,10 @@
+Package: ccer
+Type: Package
+Title: R Library for CCER Data and Research
+Version: 0.1.0
+Authors@R: person("Jeff", "Chiu", email = "jchiu@ccedresults.org",
+  role = c("aut", "cre"))
+Description: Helpful functions for data validation, ETL, analysis, etc.
+License: Public Domain
+Encoding: UTF-8
+LazyData: true
