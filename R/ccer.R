@@ -30,7 +30,7 @@ installRequiredPackages <- function() {
 }
 
 # loads all the required libraries into current R session
-rmpInit <- function() {
+loadRequiredPackages <- function() {
   suppressPackageStartupMessages({
     for(package in requiredPackages) {
       success <- library(package, character.only = T, quietly = T, warn.conflicts = FALSE, logical.return = T)
