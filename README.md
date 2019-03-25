@@ -1,6 +1,9 @@
 
 # ccer R Library
 
+Commonly used code for doing data validation, ETL, analysis, etc. This
+is a work in progress.
+
 ## How to install
 
 From within an R Studio session or script:
@@ -19,8 +22,18 @@ In R:
 ```
 # load the package
 library("rccer")
+
 # install commonly used packages
 installRequiredPackages()
-# load commonly used packages
-rmpInit()
+# load them
+loadRequiredPackages()
+
+# ready to use the functions in ccer.R
+
+df <- readCSV("C:/Users/username/somefile.csv")
+
+transformed <- df %>%
+    mutate(field2 = field1 + 2)
+
+writeToTsv("transformed.txt", transformed)
 ```
