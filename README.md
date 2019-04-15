@@ -37,3 +37,15 @@ transformed <- df %>%
 
 writeToTsv("transformed.txt", transformed)
 ```
+
+## Development Instructions
+
+- Clone this repo. Make changes.
+
+- Run this from an R session to make sure your changes work:
+
+```
+install.packages("C:/directory/to/rccer", repos = NULL, type = "source")
+```
+
+- Commit your changes and push.
