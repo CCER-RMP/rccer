@@ -8,6 +8,7 @@ requiredPackages <-
    ,"excel.link"
    ,"openxlsx"
    ,"purrr"
+   ,"readr"
    ,"readxl"
    ,"RODBC"
    ,"stringr"
