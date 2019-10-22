@@ -94,22 +94,17 @@ getROutputPath <- function(filename) {
 
 ## common desirable options when reading in CSV files
 readCSV <- function(path, sep=",", fileEncoding="") {
-  return(read.csv(
-    path
-   ,header=TRUE
-   ,sep=sep
-    ## check.names=F so we don't mangle headers that begin with numerals
-   ,check.names=FALSE
-   ,as.is=TRUE
-   ,na.strings=c('')
-    ## treat everything as text to preserve source data as closely as possible
-   ,colClasses=c('character')
-   ,fileEncoding=fileEncoding
-  ))
+  return(read_delim(path,
+    sep,
+    # override default 'na' to avoid interpreting 'NA' string as nulls:
+    # 'NA' string is an actually occurring value we need to preserve in some of our data
+    na = c(""),
+    trim_ws = FALSE,
+    col_types = cols(.default = "c")))
 }
 
 ## Write to delimited file; default to tabs
-writeToDelimitedFile <- function(filename, df, sep="\t") {
+writeToDelimitedFile <- function(filename, df, sep="\t", fileEncoding="") {
   write.table(
     df,
     file = filename,
@@ -120,13 +115,14 @@ writeToDelimitedFile <- function(filename, df, sep="\t") {
     na = "",
     dec = ".",
     row.names = FALSE,
-    col.names = TRUE
+    col.names = TRUE,
+    fileEncoding = fileEncoding
   )
 }
 
 ## Write to tab-separated file
-writeToTsv <- function(filename, df) {
-  writeToDelimitedFile(filename, df)
+writeToTsv <- function(filename, df, fileEncoding="") {
+  writeToDelimitedFile(filename, df, fileEncoding="")
 }
 
 
