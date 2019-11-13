@@ -11,6 +11,7 @@ requiredPackages <-
    ,"readr"
    ,"readxl"
    ,"RODBC"
+   ,"RSQLite"
    ,"stringr"
    ,"tibble"
   )
