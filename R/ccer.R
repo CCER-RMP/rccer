@@ -49,13 +49,17 @@ loadRequiredPackages <- function() {
 ## input and output can be individual path strings or vectors of path strings.
 ## returns true if output file(s) neeed to be regenerated b/c they are older than the newest input file(s).
 needsUpdate <- function(input, output) {
-  latestInput <- max(file.info(input)$mtime)
-  earliestOutput <- min(file.info(output)$mtime)
-  if(is.na(earliestOutput)) {
-    earliestOutput <- 0
+  # do check on timestamps only if this var is set
+  if(Sys.getenv("RmpNeedsUpdateCache") != '')  {
+    latestInput <- max(file.info(input)$mtime)
+    earliestOutput <- min(file.info(output)$mtime)
+    if(is.na(earliestOutput)) {
+      earliestOutput <- 0
+    }
+    ##print(paste("comparing", latestInput, earliestOutput))
+    return(latestInput > earliestOutput)
   }
-  ##print(paste("comparing", latestInput, earliestOutput))
-  return(latestInput > earliestOutput)
+  return(T)
 }
 
 ## WARNING: This is EXTREMELY slow. It took several mins to write 30,000 rows to a table.
